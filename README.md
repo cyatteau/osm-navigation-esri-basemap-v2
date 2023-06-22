@@ -2,7 +2,7 @@
 
 ### Description
 
-OpenStreetMap (OSM) is a collaborative project to create a free editable map of the world. 
+OpenStreetMap (OSM) is a collaborative project to create a free editable map of the world. These vector basemaps are based on the Daylight map distribution of OSM data and are hosted by Esri. They present the map in a cartographic style similar to the Esri Vector Basemap Navigation map or Esri Vector Basemap Navigation Dark map.
 
 ### Other Requirements
 
