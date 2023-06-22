@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>OSM Navigation</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <style>
+      html,
+      body,
+      #map {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        color: #323232;
+      }
+      .light-btn {
+        position: absolute;
+        top: 93.5%;
+        bottom: auto;
+        left: 98%;
+        height: auto;
+        background-color: white;
+        border: 1px solid rgb(203, 201, 201);
+        border-radius: 6px;
+        padding: 5px;
+      }
+      .light-btn:hover {
+        cursor: pointer;
+        background-color: rgb(216, 212, 212);
+      }
+    </style>
+    <script src=https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js></script>
+    <link href=https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css rel="stylesheet" />
+    <!-- Calcite components -->
+    <script type="module" src="https://js.arcgis.com/calcite-components/1.0.5/calcite.esm.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.0.5/calcite.css" />
+  </head>
+  <body>
+    <div id="map"></div>
+    <button id="light-btn" class="light-btn">
+      <calcite-icon icon="contrast" text-label="file-code"> </calcite-icon>
+    </button>
+    <script>
+      const apiKey = "AAPKa2e75762cf67409a86af30d10be5a49dyVG402QjxPpUBGJlpAb9aQ1mCPEl5kgCBvUmLDA-gCYQcpOzyczieZ5jRuho2ipE";
+      let basemapEnum = "osm/navigation";
+      let map = new maplibregl.Map({
+        container: "map", // the id of the div element
+        style: `https://basemapstyles-api.arcgis.com/arcgis/rest/services/styles/v2/styles/${basemapEnum}?token=${apiKey}`,
+        zoom: 10, // starting zoom
+        center: [-117.1611, 32.7157], // starting location [longitude, latitude]
+      })
+      const lightBtn = document.getElementById("light-btn");
+      lightBtn.addEventListener("click", function() {
+        if (basemapEnum == "osm/navigation-dark") {
+          basemapEnum = "osm/navigation";
+        } else {
+          basemapEnum = "osm/navigation-dark";
+        }
+        map = new maplibregl.Map({
+          container: "map", // the id of the div element
+          style: `https://basemapstyles-api.arcgis.com/arcgis/rest/services/styles/v2/styles/${basemapEnum}?token=${apiKey}`,
+          zoom: 10, // starting zoom
+          center: [-117.1611, 32.7157], // starting location [longitude, latitude]
+          attributionControl: false
+        })
+      })
+    </script>
+  </body>
+</html>
